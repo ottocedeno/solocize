@@ -8,5 +8,6 @@ use UsersController
 use WorkoutsController
 use ExercisesController
 run ApplicationController
+use WorkoutExercisesController
 
 
