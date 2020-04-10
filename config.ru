@@ -6,5 +6,6 @@ end
 
 use UsersController
 run ApplicationController
+use ExercisesController
 use WorkoutsController
 
