@@ -1,5 +1,14 @@
-#Create Users
-#----------------------------------------
+##### Clear DB Before Seeding #####
+
+# [User, Exercise, Workout, Category].each {|c| c.destroy_all}
+
+# ActiveRecord::Base.connection.tables.each do |t|
+#   ActiveRecord::Base.connection.execute("Delete from #{t}")
+#   ActiveRecord::Base.connection.execute("DELETE FROM SQLITE_SEQUENCE WHERE name='#{t}'")
+# end
+
+##### Create Users #####
+
 otto = User.create(
   first_name: "Otto",
   last_name: "Cedeno",
@@ -36,8 +45,8 @@ samantha = User.create(
 )
 
 
-#Categories
-#----------------------------------------
+##### Categories #####
+
 arms = Category.create(name: "Arms")
 chest = Category.create(name: "Chest")
 back = Category.create(name: "Back")
@@ -46,8 +55,7 @@ core = Category.create(name: "Core")
 cardio = Category.create(name: "Cardio")
 
 
-#Exercises
-#----------------------------------------
+##### Exercises #####
 
 #ARMS
 curls = Exercise.create(name: "Bicep Curls", rep_count: 10, category: arms)
@@ -89,8 +97,7 @@ burpees = Exercise.create(name: "Burpees", rep_count: 10, category: cardio)
 high_knees = Exercise.create(name: "High Knees", rep_count: 30, category: cardio)
 
 
-#Workouts
-#----------------------------------------
+##### Workouts #####
 
 Workout.create(
   name: "Full Body Wake Up",
@@ -140,8 +147,3 @@ Workout.create(
   user: korey,
   exercises: [burpees, bicycles, lunges, leg_lifts, plank_jacks]
 )
-
-#----------------------------------------
-#----------------------------------------
-#Clear DB !!!!!!!!! 
-# [User, Exercise, Workout, Category].each {|c| c.destroy_all}
