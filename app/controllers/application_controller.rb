@@ -18,6 +18,22 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/login' do
+
     binding.pry
+  end
+
+  helpers do
+
+    def set_session(user)
+      session[:user_id] = user.id 
+    end
+
+    def logged_in?
+      !!session[:user_id]
+    end
+
+    def current_user
+      User.find(session[:user_id])
+    end
   end
 end
