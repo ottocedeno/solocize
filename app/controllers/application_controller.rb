@@ -9,12 +9,18 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
   end
 
+  ####### Index Redirect #######
   get "/" do
     redirect '/login'
   end
 
+  ####### Login Flow #######
   get '/login' do
-    erb :login
+    if logged_in?
+      redirect '/workouts'
+    else
+      erb :login
+    end
   end
 
   post '/login' do
@@ -28,8 +34,8 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+  ####### Helper Methods #######
   helpers do
-
     def set_session(user)
       session[:user_id] = user.id 
     end
