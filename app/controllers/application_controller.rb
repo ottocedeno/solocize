@@ -44,14 +44,13 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/signup' do
-    #check if all inputs have values.
     if valid_signup_entries? && !username_exists?
-      "This is a valid new user"
+      @user = User.create(params)
+      set_session(@user)
+      redirect '/workouts'
     else
-      "This isn't the user you're looking for..."
+      redirect '/signup'
     end
-    #if ok => create user, set session, send to workouts
-    #if not ok => send back to sign up form
   end
 
   ####### Helper Methods #######
