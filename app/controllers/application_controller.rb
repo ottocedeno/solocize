@@ -18,8 +18,14 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/login' do
+    @user = User.find_by(username: params[:username])
 
-    binding.pry
+    if @user && @user.authenticate(params[:password])
+      set_session(@user)
+      redirect '/workouts'
+    else
+      redirect '/login'
+    end
   end
 
   helpers do
