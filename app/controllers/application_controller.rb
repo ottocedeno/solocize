@@ -34,6 +34,15 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+  ####### Signup Flow #######
+  get '/signup' do
+    if logged_in?
+      redirect '/workouts'
+    else
+      erb :signup
+    end
+  end
+
   ####### Helper Methods #######
   helpers do
     def set_session(user)
