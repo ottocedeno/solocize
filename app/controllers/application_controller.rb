@@ -8,7 +8,14 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    erb :welcome
+    redirect '/login'
   end
 
+  get '/login' do
+    erb :login
+  end
+
+  post '/login' do
+    binding.pry
+  end
 end
