@@ -9,4 +9,5 @@ ActiveRecord::Base.establish_connection(
 )
 
 require './app/controllers/application_controller'
+require_all 'lib'
 require_all 'app'
