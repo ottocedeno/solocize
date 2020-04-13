@@ -1,8 +1,15 @@
 class WorkoutsController < ApplicationController
 
-  # GET: /workouts
+####### GET /Workouts #######
   get "/workouts" do
-    erb :"/workouts/index.html"
+    if logged_in?
+      @featured_workout = Workout.featured
+      @workouts = Workout.all
+      erb :"/workouts/index"
+    else
+      redirect '/login'
+    end
+    
   end
 
   # GET: /workouts/new
