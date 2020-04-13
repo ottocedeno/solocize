@@ -1,12 +1,3 @@
-##### Clear DB Before Seeding #####
-
-# [User, Exercise, Workout, Category].each {|c| c.destroy_all}
-
-# ActiveRecord::Base.connection.tables.each do |t|
-#   ActiveRecord::Base.connection.execute("Delete from #{t}")
-#   ActiveRecord::Base.connection.execute("DELETE FROM SQLITE_SEQUENCE WHERE name='#{t}'")
-# end
-
 ##### Create Users #####
 
 otto = User.create(
@@ -103,6 +94,7 @@ Workout.create(
   name: "Full Body Wake Up",
   description: "Hit every muscle group once. Perfect for mornings.",
   user: otto,
+  minutes: 15,
   exercises: [lateral_raises, situps, lunges, pushups, climbers]
 )
 
@@ -110,6 +102,7 @@ Workout.create(
   name: "Abs, Abs, Abs",
   description: "Quick way to keep the ice cream away!",
   user: charlotte,
+  minutes: 10,
   exercises: [situps, bicycles, leg_lifts, plank_jacks, side_plank_twist]
 )
 
@@ -117,6 +110,7 @@ Workout.create(
   name: "Cardio Gods 101",
   description: "This one will get your heart rate up.",
   user: korey,
+  minutes: 15,
   exercises: [climbers, wall_sit, high_knees, jump_squats, burpees]
 )
 
@@ -124,6 +118,7 @@ Workout.create(
   name: "Arm Pump",
   description: "Focused on glamour muscles.  Great before beach.",
   user: otto,
+  minutes: 20,
   exercises: [curls, pushups, pullups, dips, shoulder_press]
 )
 
@@ -131,6 +126,7 @@ Workout.create(
   name: "Warm Up Before a Run",
   description: "Try this one out before a run.",
   user: samantha,
+  minutes: 15,
   exercises: [squats, high_knees, rdl, toe_touches, bicycles]
 )
 
@@ -138,6 +134,7 @@ Workout.create(
   name: "Bis and Back",
   description: "Focused on upper body pull motions",
   user: joe,
+  minutes: 15,
   exercises: [renegade_rows, curls, flys, pullups, rows]
 )
 
@@ -145,5 +142,6 @@ Workout.create(
   name: "Quick Conditioning and Core",
   description: "Great for an after work sweat!",
   user: korey,
+  minutes: 12,
   exercises: [burpees, bicycles, lunges, leg_lifts, plank_jacks]
 )
