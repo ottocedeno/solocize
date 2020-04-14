@@ -53,6 +53,12 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+  ####### Logout Flow #######
+  get '/logout' do
+    session.clear if logged_in?
+    redirect '/login'
+  end
+
   ####### Helper Methods #######
   helpers do
     def set_session(user)
