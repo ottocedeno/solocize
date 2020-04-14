@@ -27,7 +27,7 @@ class WorkoutsController < ApplicationController
       @workout = Workout.find_by_slug(params[:slug])
 
       if @workout
-        erb :"/workouts/show.html"
+        erb :"/workouts/show"
       else
         redirect '/workouts'
       end
