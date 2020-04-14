@@ -14,11 +14,16 @@ class WorkoutsController < ApplicationController
 
   ####### GET /workouts/new && POST /workouts #######
   get "/workouts/new" do
-    erb :"/workouts/new.html"
+    if logged_in?
+      @exercises = Exercise.all
+      erb :"/workouts/new"
+    else
+      redirect '/login'
+    end    
   end
 
   post "/workouts" do
-    redirect "/workouts"
+    binding.pry
   end
 
   ####### GET /workouts/:slug #######
