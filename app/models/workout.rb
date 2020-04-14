@@ -1,4 +1,5 @@
 class Workout < ActiveRecord::Base
+  
   include Slugify::InstanceMethods
   extend Slugify::ClassMethods
   

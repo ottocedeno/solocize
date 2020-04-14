@@ -6,12 +6,15 @@
   <a href="/logout">Log Out</a>
 </nav>
 
-<div>
-  <h3>FEATURED WORKOUT</h3>
-  <p>@<%= @featured_workout.user.username %></p>
-  <p><%= @featured_workout.name %></p>
-  <p><%= @featured_workout.minutes %> Minutes</p>
-</div>
+<a href="/workouts/<%= @featured_workout.slug %>">
+  <div>
+    <h3>FEATURED WORKOUT</h3>
+    <p>@<%= @featured_workout.user.username %></p>
+    <p><%= @featured_workout.name %></p>
+    <p><%= @featured_workout.minutes %> Minutes</p>
+  </div>
+</a>
+
 
 <div>
   <h3>MY WORKOUTS</h3>
@@ -20,7 +23,7 @@
 
 <div>
   <% current_user.workouts.each do |workout| %>
-    <a>
+    <a href="/workouts/<%= workout.slug %>">
       <h4><%= workout.name %></h4>
       <p><%= workout.minutes %> Minutes</p>
     </a>
@@ -33,10 +36,12 @@
 
 <div>
   <% @workouts.reverse.each do |workout| %>
-    <div>
-      <div><%= workout.user.user_initials %></div>
-      <p><%= workout.name %></p>
-      <p>@<%= workout.user.username %></p>
-    </div>
+    <a href="/workouts/<%= workout.slug %>">
+      <div>
+        <div><%= workout.user.user_initials %></div>
+        <p><%= workout.name %></p>
+        <p>@<%= workout.user.username %></p>
+      </div>
+    </a>
   <% end %>
 </div>

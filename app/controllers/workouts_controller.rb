@@ -1,6 +1,6 @@
 class WorkoutsController < ApplicationController
 
-####### GET /Workouts #######
+####### GET /workouts #######
   get "/workouts" do
     if logged_in?
       @featured_workout = Workout.featured
@@ -12,19 +12,28 @@ class WorkoutsController < ApplicationController
     
   end
 
-  # GET: /workouts/new
+  ####### GET /workouts/new && POST /workouts #######
   get "/workouts/new" do
     erb :"/workouts/new.html"
   end
 
-  # POST: /workouts
   post "/workouts" do
     redirect "/workouts"
   end
 
-  # GET: /workouts/5
-  get "/workouts/:id" do
-    erb :"/workouts/show.html"
+  ####### GET /workouts/:slug #######
+  get "/workouts/:slug" do
+    if logged_in?
+      @workout = Workout.find_by_slug(params[:slug])
+
+      if @workout
+        erb :"/workouts/show.html"
+      else
+        redirect '/workouts'
+      end
+    else
+      redirect '/login'
+    end    
   end
 
   # GET: /workouts/5/edit
