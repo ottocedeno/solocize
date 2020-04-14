@@ -23,7 +23,12 @@ class WorkoutsController < ApplicationController
   end
 
   post "/workouts" do
-    binding.pry
+    if valid_workout_entries? && valid_minutes? && valid_exercises?
+      "I'm valid"
+    else
+      puts "Ya fucked up"
+      redirect '/workouts/new'
+    end
   end
 
   ####### GET /workouts/:slug #######
@@ -54,5 +59,21 @@ class WorkoutsController < ApplicationController
   # DELETE: /workouts/5/delete
   delete "/workouts/:id/delete" do
     redirect "/workouts"
+  end
+
+  ####### Workout Controller Helper Methods #######
+  helpers do 
+    def valid_workout_entries?
+      params[:workout].values.all? {|v| !v.empty?}
+    end
+
+    def valid_minutes?
+      min = params[:workout][:minutes].to_i
+      min > 0
+    end
+
+    def valid_exercises?
+      params[:exercise_ids] && params[:exercise_ids].count == 5
+    end
   end
 end
