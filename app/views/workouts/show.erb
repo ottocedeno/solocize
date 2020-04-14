@@ -1,0 +1,29 @@
+<nav>
+  <a href="/workouts">
+    <h1>SOLOCIZE</h1>
+  </a>
+  <div class="user-icon"><%= current_user.user_initials %></div>
+  <a href="/logout">Log Out</a>
+</nav>
+
+<div>
+  <h2><%= @workout.name %></h2>
+  <p>@<%= @workout.user.username %></p>
+  <p><%= @workout.description %></p>
+  <p><%= @workout.minutes %> Minutes</p>
+</div>
+
+<div>
+  <% @workout.exercises.each.with_index(1) do |exercise, index| %>
+  <div>
+    <div>
+      <%= index %>
+    </div>
+    <div>
+      <h3><%= exercise.name %></h3>
+      <p><%= exercise.rep_count %> Reps</p>
+      <span><%= exercise.category.name %></span>
+    </div>
+  </div>
+  <% end %>
+</div>
