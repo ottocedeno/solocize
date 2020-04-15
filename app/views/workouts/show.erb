@@ -10,13 +10,15 @@
   <h2><%= @workout.name %></h2>
   <p>@<%= @workout.user.username %></p>
   <p><%= @workout.description %></p>
-  <div>
-    <a href="/workouts/<%= @workout.slug %>/edit">edit</a>
-    <form action="/workouts/<%= @workout.slug %>" method="POST">
-      <input type="hidden" name="_method" value="DELETE" />
-      <button type="submit" value="delete">delete</button>
-    </form>
-  </div>
+  <% if user_owns_workout? %>
+    <div>
+      <a href="/workouts/<%= @workout.slug %>/edit">edit</a>
+      <form action="/workouts/<%= @workout.slug %>" method="POST">
+        <input type="hidden" name="_method" value="DELETE" />
+        <button type="submit" value="delete">delete</button>
+      </form>
+    </div>
+  <% end %>
 </div>
 
 <div>
