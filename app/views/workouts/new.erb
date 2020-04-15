@@ -21,40 +21,15 @@
     <br />
     <input type="text" name="workout[minutes]" placeholder="Length in Minutes" /> <br />
 
-    <select name="exercise_ids[]" >
-      <option value="" disabled selected hidden>Exercise 1</option>
-      <% @exercises.each do |exercise| %>
-        <option value="<%= exercise.id %>"><%= exercise.category.name %> - <%= exercise.name %> - <%= exercise.rep_count %> Reps</option>
-      <% end %>
-    </select> </br>
-
-    <select name="exercise_ids[]" >
-      <option value="" disabled selected hidden>Exercise 2</option>
-      <% @exercises.each do |exercise| %>
-        <option value="<%= exercise.id %>"><%= exercise.category.name %> - <%= exercise.name %> - <%= exercise.rep_count %> Reps</option>
-      <% end %>
-    </select></br>
+    <% 5.times do |index| %>
+      <select name="exercise_ids[]" >
+        <option value="" disabled selected hidden>Exercise <%= index + 1 %></option>
+        <% @exercises.each do |exercise| %>
+          <option value="<%= exercise.id %>"><%= exercise.category.name %> - <%= exercise.name %> - <%= exercise.rep_count %> Reps</option>
+        <% end %>
+      </select> </br>
+    <% end %>
     
-    <select name="exercise_ids[]" >
-      <option value="" disabled selected hidden>Exercise 3</option>
-      <% @exercises.each do |exercise| %>
-        <option value="<%= exercise.id %>"><%= exercise.category.name %> - <%= exercise.name %> - <%= exercise.rep_count %> Reps</option>
-      <% end %>
-    </select></br>
-
-    <select name="exercise_ids[]" >
-      <option value="" disabled selected hidden>Exercise 4</option>
-      <% @exercises.each do |exercise| %>
-        <option value="<%= exercise.id %>"><%= exercise.category.name %> - <%= exercise.name %> - <%= exercise.rep_count %> Reps</option>
-      <% end %>
-    </select></br>
-
-    <select name="exercise_ids[]" >
-      <option value="" disabled selected hidden>Exercise 5</option>
-      <% @exercises.each do |exercise| %>
-        <option value="<%= exercise.id %>"><%= exercise.category.name %> - <%= exercise.name %> - <%= exercise.rep_count %> Reps</option>
-      <% end %>
-    </select></br>
     <p>Didn’t see an exercise you’re looking for from the list?<a href="/exercises/new"> Add it here</a></p>
     <button type="submit">CREATE WORKOUT</button>
   </form>
