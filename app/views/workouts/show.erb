@@ -10,10 +10,17 @@
   <h2><%= @workout.name %></h2>
   <p>@<%= @workout.user.username %></p>
   <p><%= @workout.description %></p>
-  <p><%= @workout.minutes %> Minutes</p>
+  <div>
+    <a href="/workouts/<%= @workout.slug %>/edit">edit</a>
+    <form action="/workouts/<%= @workout.slug %>" method="POST">
+      <input type="hidden" name="_method" value="DELETE" />
+      <button type="submit" value="delete">delete</button>
+    </form>
+  </div>
 </div>
 
 <div>
+  <p>Total Time <%= @workout.minutes %> Minutes</p>
   <% @workout.exercises.each.with_index(1) do |exercise, index| %>
   <div>
     <div>

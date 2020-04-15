@@ -9,7 +9,6 @@ class WorkoutsController < ApplicationController
     else
       redirect '/login'
     end
-    
   end
 
   ####### GET /workouts/new && POST /workouts #######
@@ -27,9 +26,7 @@ class WorkoutsController < ApplicationController
       
       @user = User.find(session[:user_id])
       @workout = Workout.new(params[:workout])
-
       params[:exercise_ids].each {|id| @workout.exercises << Exercise.find(id) } 
-
       @user.workouts << @workout
       @user.save
 
@@ -81,12 +78,14 @@ class WorkoutsController < ApplicationController
     else
       redirect "/workouts/#{params[:slug]}/edit"
     end
-
   end
 
-  # DELETE: /workouts/5/delete
-  delete "/workouts/:id/delete" do
-    redirect "/workouts"
+  ####### DELETE /workouts/:slug #######
+  delete "/workouts/:slug" do
+    @workout = Workout.find_by_slug(params[:slug])
+    @workout.delete
+
+    redirect '/workouts'
   end
 
   ####### Workout Controller Helper Methods #######
