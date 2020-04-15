@@ -5,33 +5,23 @@ class ExercisesController < ApplicationController
     erb :"/exercises/index.html"
   end
 
-  # GET: /exercises/new
+  ####### GET /exercises/new && POST /exercises #######
   get "/exercises/new" do
-    erb :"/exercises/new.html"
+    if logged_in?
+      @categories = Category.all
+      erb :'exercises/new'
+    else
+      redirect '/login'
+    end
   end
 
-  # POST: /exercises
   post "/exercises" do
-    redirect "/exercises"
+    binding.pry
   end
 
-  # GET: /exercises/5
-  get "/exercises/:id" do
-    erb :"/exercises/show.html"
-  end
+  helpers do
+    def valid_exercise_entries?
 
-  # GET: /exercises/5/edit
-  get "/exercises/:id/edit" do
-    erb :"/exercises/edit.html"
-  end
-
-  # PATCH: /exercises/5
-  patch "/exercises/:id" do
-    redirect "/exercises/:id"
-  end
-
-  # DELETE: /exercises/5/delete
-  delete "/exercises/:id/delete" do
-    redirect "/exercises"
+    end
   end
 end

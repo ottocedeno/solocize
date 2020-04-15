@@ -1,0 +1,29 @@
+<nav>
+  <a href="/workouts">
+    <h1>SOLOCIZE</h1>
+  </a>
+  <div class="user-icon"><%= current_user.initials %></div>
+  <a href="/logout">Log Out</a>
+</nav>
+
+<div>
+  <h2>CREATE AN EXERCISE</h2>
+  <p>
+    If you didn’t see an exercise you were looking for, just created it here for
+    our community to use!
+  </p>
+</div>
+
+<div>
+  <form action="/exercises" method="POST">
+    <input type="text" name="exercise[name]" placeholder="Exercise Name" />
+    <input type="text" name="exercise[rep_count]" placeholder="How Many Reps?" />
+    <select name="category_id">
+      <option value="" disabled selected hidden>Category</option>
+      <% @categories.each do |category| %>
+        <option value=<%= category.id %>><%= category.name %><option>
+      <% end %>
+    </select>
+    <button type="submit">CREATE EXERCISE</button>
+  </form>
+</div>
