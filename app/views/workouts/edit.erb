@@ -14,12 +14,13 @@
 </div>
 
 <div>
-  <form action="/workouts/<%= @workout.slug %>" method="POST">
-    <input type="hidden" name="_method" value="PATCH" />
-    <input type="text" name="workout[name]" placeholder="<%= @workout.name %>" /> <br />
-    <input type="text" name="workout[description]" placeholder="<%= @workout.description %>" />
+  <form action="/workouts/<%= @workout.slug %>" method="post">
+    <input id="hidden" type="hidden" value="patch" name="_method">
+    
+    <input type="text" name="workout[name]" value="<%= @workout.name %>" /> <br />
+    <input type="text" name="workout[description]" value="<%= @workout.description %>" />
     <br />
-    <input type="text" name="workout[minutes]" placeholder="<%= @workout.minutes %>" /> <br />
+    <input type="text" name="workout[minutes]" value="<%= @workout.minutes %>" /> <br />
 
     <% 5.times do |index| %>
       <select name="exercise_ids[]" >

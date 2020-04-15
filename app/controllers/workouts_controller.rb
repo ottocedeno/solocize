@@ -71,7 +71,17 @@ class WorkoutsController < ApplicationController
   end
 
   patch "/workouts/:slug" do
-    redirect "/workouts/:id"
+    if valid_workout_entries? && valid_minutes?
+      @workout = Workout.find_by_slug(params[:slug])
+      @workout.update(params[:workout])
+      @workout.exercises.clear
+      params[:exercise_ids].each {|id| @workout.exercises << Exercise.find(id) }
+
+      redirect "/workouts/#{@workout.slug}"
+    else
+      redirect "/workouts/#{params[:slug]}/edit"
+    end
+
   end
 
   # DELETE: /workouts/5/delete
