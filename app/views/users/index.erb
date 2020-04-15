@@ -1,1 +1,26 @@
-<h1>This is the Model's index page.</h1>
+<nav>
+  <a href="/workouts">
+    <h1>SOLOCIZE</h1>
+  </a>
+  <div class="user-icon"><%= current_user.initials %></div>
+  <a href="/logout">Log Out</a>
+</nav>
+
+<div>
+  <h2>MEMBERS</h2>
+  <p>A community of people getting better, 1% at a time</p>
+</div>
+
+<div>
+  <% @users.each do |user| %>
+    <a href="/users/<%= user.username %>">
+      <div><%= user.initials %></div>
+      <p><%= user.username %></p>
+      <% if user.workouts.count > 1 %>
+        <p><%= user.workouts.count %> Workouts</p>
+      <% else %>
+        <p><%= user.workouts.count %> Workout</p>
+      <% end %>
+    </a>
+  <% end %>
+</div>

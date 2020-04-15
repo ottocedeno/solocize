@@ -2,7 +2,7 @@
   <a href="/workouts">
     <h1>SOLOCIZE</h1>
   </a>
-  <div class="user-icon"><%= current_user.user_initials %></div>
+  <div class="user-icon"><%= current_user.initials %></div>
   <a href="/logout">Log Out</a>
 </nav>
 
@@ -38,7 +38,7 @@
   <% @workouts.reverse.each do |workout| %>
     <a href="/workouts/<%= workout.slug %>">
       <div>
-        <div><%= workout.user.user_initials %></div>
+        <div><%= workout.user.initials %></div>
         <p><%= workout.name %></p>
         <p>@<%= workout.user.username %></p>
       </div>

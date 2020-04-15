@@ -2,7 +2,8 @@ class UsersController < ApplicationController
 
   ####### GET /users/ #######
   get "/users" do
-    erb :"/users/index.html"
+    @users = User.all
+    erb :"/users/index"
   end
 
   ####### GET /users/:slug #######
