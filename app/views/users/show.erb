@@ -1,0 +1,27 @@
+<nav>
+  <a href="/workouts">
+    <h1>SOLOCIZE</h1>
+  </a>
+  <div class="user-icon"><%= current_user.user_initials %></div>
+  <a href="/logout">Log Out</a>
+</nav>
+
+<div>
+  <% if current_user.id == @user.id%>
+    <h2>MY WORKOUTS</h2>
+  <% else %>
+    <h2>WORKOUTS BY</h2>
+  <% end %>
+  <p>@<%= @user.username %></p>
+</div>
+
+<div>
+  <% @user.workouts.each do |workout| %>
+    <a href="/workouts/<%= workout.slug %>">
+      <h3><%= workout.name %></h3>
+      <p><%= workout.minutes %> Minutes</p>
+    </a>
+  <% end %>
+</div>
+
+<a href="/workouts/new">+</a>

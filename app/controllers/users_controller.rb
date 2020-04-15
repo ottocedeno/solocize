@@ -1,23 +1,19 @@
 class UsersController < ApplicationController
 
-  # GET: /users
+  ####### GET /users/ #######
   get "/users" do
     erb :"/users/index.html"
   end
 
-  # GET: /users/new
-  get "/users/new" do
-    erb :"/users/new.html"
-  end
+  ####### GET /users/:slug #######
+  get "/users/:username" do
+    if logged_in?
+      @user = User.find_by(username: params[:username])
+      erb :"/users/show"
+    else
+      redirect '/login'
+    end
 
-  # POST: /users
-  post "/users" do
-    redirect "/users"
-  end
-
-  # GET: /users/5
-  get "/users/:id" do
-    erb :"/users/show.html"
   end
 
   # GET: /users/5/edit
