@@ -24,9 +24,17 @@ class WorkoutsController < ApplicationController
 
   post "/workouts" do
     if valid_workout_entries? && valid_minutes? && valid_exercises?
-      "I'm valid"
+      
+      @user = User.find(session[:user_id])
+      @workout = Workout.new(params[:workout])
+
+      params[:exercise_ids].each {|id| @workout.exercises << Exercise.find(id) } 
+
+      @user.workouts << @workout
+      @user.save
+
+      redirect "/workouts/#{@workout.slug}"
     else
-      puts "Ya fucked up"
       redirect '/workouts/new'
     end
   end
