@@ -57,13 +57,20 @@ class WorkoutsController < ApplicationController
   ####### GET /workouts/:slug/edit & PATCH #######
   get "/workouts/:slug/edit" do
     if logged_in?
-      binding.pry
+      @workout = Workout.find_by_slug(params[:slug])
+
+      if @workout && user_owns_workout?
+        @exercises = Exercise.all
+        erb :'workouts/edit'
+      else
+        redirect "/workouts/#{params[:slug]}"
+      end
     else
       redirect '/login'
     end
   end
 
-  patch "/workouts/:id" do
+  patch "/workouts/:slug" do
     redirect "/workouts/:id"
   end
 

@@ -1,0 +1,36 @@
+<nav>
+  <a href="/workouts">
+    <h1>SOLOCIZE</h1>
+  </a>
+  <div class="user-icon"><%= current_user.user_initials %></div>
+  <a href="/logout">Log Out</a>
+</nav>
+
+<div>
+  <h2>EDITING</h2>
+  <p>
+    <%= @workout.name %>
+  </p>
+</div>
+
+<div>
+  <form action="/workouts/<%= @workout.slug %>" method="POST">
+    <input type="hidden" name="_method" value="PATCH" />
+    <input type="text" name="workout[name]" placeholder="<%= @workout.name %>" /> <br />
+    <input type="text" name="workout[description]" placeholder="<%= @workout.description %>" />
+    <br />
+    <input type="text" name="workout[minutes]" placeholder="<%= @workout.minutes %>" /> <br />
+
+    <% 5.times do |index| %>
+      <select name="exercise_ids[]" >
+        <% @exercises.each do |exercise| %>
+          <option value="<%= exercise.id %>" <%= "selected" if @workout.exercise_ids[index] == exercise.id %>>
+            <%= exercise.category.name %> - <%= exercise.name %> - <%= exercise.rep_count %> Reps
+          </option>
+        <% end %>
+      </select> </br>
+    <% end %>
+
+    <button type="submit">EDIT WORKOUT</button>
+  </form>
+</div>
