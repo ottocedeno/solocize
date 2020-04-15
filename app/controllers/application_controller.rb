@@ -74,7 +74,7 @@ class ApplicationController < Sinatra::Base
     end
 
     def valid_signup_entries?
-      !params[:first_name].empty? && !params[:last_name].empty? && !params[:username].empty? && !params[:password].empty?
+      params.values.all? {|v| !v.empty?}
     end
 
     def username_exists?

@@ -54,12 +54,15 @@ class WorkoutsController < ApplicationController
     end    
   end
 
-  # GET: /workouts/5/edit
-  get "/workouts/:id/edit" do
-    erb :"/workouts/edit.html"
+  ####### GET /workouts/:slug/edit & PATCH #######
+  get "/workouts/:slug/edit" do
+    if logged_in?
+      binding.pry
+    else
+      redirect '/login'
+    end
   end
 
-  # PATCH: /workouts/5
   patch "/workouts/:id" do
     redirect "/workouts/:id"
   end
@@ -82,6 +85,11 @@ class WorkoutsController < ApplicationController
 
     def valid_exercises?
       params[:exercise_ids] && params[:exercise_ids].count == 5
+    end
+
+    def user_owns_workout?
+      w = Workout.find_by_slug(params[:slug])
+      w.user_id == session[:user_id]
     end
   end
 end
