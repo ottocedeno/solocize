@@ -8,7 +8,7 @@
 
 <div>
   <h2><%= @workout.name %></h2>
-  <p>@<%= @workout.user.username %></p>
+  <a href="/users/<%= @workout.user.username %>"><p>@<%= @workout.user.username %></p></a>
   <p><%= @workout.description %></p>
   <% if user_owns_workout? %>
     <div>

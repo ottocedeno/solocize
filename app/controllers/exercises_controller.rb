@@ -1,6 +1,6 @@
 class ExercisesController < ApplicationController
 
-  # GET: /exercises
+  ####### GET /exercises #######
   get "/exercises" do
     if logged_in?
       @categories = Category.all
@@ -34,6 +34,7 @@ class ExercisesController < ApplicationController
     
   end
 
+  ####### Exercise Controller Helper Methods #######
   helpers do
     def valid_exercise_entries?
       params[:exercise].values.all? {|v| !v.empty?}
