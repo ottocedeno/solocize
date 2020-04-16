@@ -1,1 +1,24 @@
-<h1>This is the Model's index page.</h1>
+<nav>
+  <a href="/workouts">
+    <h1>SOLOCIZE</h1>
+  </a>
+  <div class="user-icon"><%= current_user.initials %></div>
+  <a href="/logout">Log Out</a>
+</nav>
+
+<div>
+  <h2>EXERCISE LIST</h2>
+</div>
+
+<div>
+  <% @categories.sort_by {|c| c.name }.each do |category| %>
+    <div>
+      <h3><%= category.name %></h3>
+      <% category.exercises.sort_by {|e| e.name }.each do |exercise| %>
+        <p><%= exercise.name %> <span><%= exercise.rep_count %> Reps</span><p>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<a href="/workouts/new">+</a>

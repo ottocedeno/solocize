@@ -2,7 +2,12 @@ class ExercisesController < ApplicationController
 
   # GET: /exercises
   get "/exercises" do
-    erb :"/exercises/index.html"
+    if logged_in?
+      @categories = Category.all
+      erb :"/exercises/index"
+    else
+      redirect '/login'
+    end
   end
 
   ####### GET /exercises/new && POST /exercises #######
