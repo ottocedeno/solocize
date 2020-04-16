@@ -16,16 +16,31 @@ class ExercisesController < ApplicationController
   end
 
   post "/exercises" do
-    binding.pry
-    @exercise = Exercise.create(params[:exercise])
-    @category = Category.find(params[:category_id])
-    @exercise.category = @category
-    @exercise.save
+    if valid_exercise_entries? && valid_reps? && selected_category?
+      @exercise = Exercise.create(params[:exercise])
+      @category = Category.find(params[:category_id])
+      @exercise.category = @category
+      @exercise.save
+
+      redirect '/exercises'
+    else
+      redirect '/exercises/new'
+    end
+    
   end
 
   helpers do
     def valid_exercise_entries?
+      params[:exercise].values.all? {|v| !v.empty?}
+    end
 
+    def valid_reps?
+      reps = params[:exercise][:rep_count].to_i
+      reps > 0
+    end
+
+    def selected_category?
+      !!params[:category_id]
     end
   end
 end
