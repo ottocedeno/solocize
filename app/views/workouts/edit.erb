@@ -24,7 +24,7 @@
 
     <% 5.times do |index| %>
       <select name="exercise_ids[]" >
-        <% @exercises.each do |exercise| %>
+        <% @exercises.sort_by {|e| [e.category.name, e.name] }.each do |exercise| %>
           <option value="<%= exercise.id %>" <%= "selected" if @workout.exercise_ids[index] == exercise.id %>>
             <%= exercise.category.name %> - <%= exercise.name %> - <%= exercise.rep_count %> Reps
           </option>
