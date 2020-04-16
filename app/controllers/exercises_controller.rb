@@ -17,6 +17,10 @@ class ExercisesController < ApplicationController
 
   post "/exercises" do
     binding.pry
+    @exercise = Exercise.create(params[:exercise])
+    @category = Category.find(params[:category_id])
+    @exercise.category = @category
+    @exercise.save
   end
 
   helpers do
