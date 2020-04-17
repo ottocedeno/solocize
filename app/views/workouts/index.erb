@@ -1,26 +1,34 @@
-<a href="/workouts/<%= @featured_workout.slug %>">
-  <div>
-    <h3>FEATURED WORKOUT</h3>
-    <p>@<%= @featured_workout.user.username %></p>
-    <p><%= @featured_workout.name %></p>
-    <p><%= @featured_workout.minutes %> Minutes</p>
-  </div>
-</a>
-
-
-<div>
-  <h3>MY WORKOUTS</h3>
-  <a href="/users/<%= current_user.username%>">See All</a>
-</div>
-
-<div>
-  <% current_user.workouts.each do |workout| %>
-    <a href="/workouts/<%= workout.slug %>">
-      <h4><%= workout.name %></h4>
-      <p><%= workout.minutes %> Minutes</p>
+<main class="wrapper">
+  <section>
+    <a
+      href="/workouts/<%= @featured_workout.slug %>"
+      class="card featured-workout"
+    >
+      <div>
+        <h2>FEATURED WORKOUT</h2>
+        <p>@<%= @featured_workout.user.username %></p>
+        <p><%= @featured_workout.name %></p>
+        <p><%= @featured_workout.minutes %> Minutes</p>
+      </div>
     </a>
-  <% end %>
-</div>
+  </section>
+
+  <section id="my-workouts">
+    <div class="flex">
+      <h3>MY WORKOUTS</h3>
+      <a href="/users/<%= current_user.username%>">See All</a>
+    </div>
+
+    <div>
+      <% current_user.workouts.each do |workout| %>
+      <a href="/workouts/<%= workout.slug %>">
+        <h4><%= workout.name %></h4>
+        <p><%= workout.minutes %> Minutes</p>
+      </a>
+      <% end %>
+    </div>
+  </section>
+</main>
 
 <div>
   <h3>COMMUNITY WORKOUTS</h3>
@@ -29,13 +37,13 @@
 
 <div>
   <% @workouts.reverse.each do |workout| %>
-    <a href="/workouts/<%= workout.slug %>">
-      <div>
-        <div><%= workout.user.initials %></div>
-        <p><%= workout.name %></p>
-        <p>@<%= workout.user.username %></p>
-      </div>
-    </a>
+  <a href="/workouts/<%= workout.slug %>">
+    <div>
+      <div><%= workout.user.initials %></div>
+      <p><%= workout.name %></p>
+      <p>@<%= workout.user.username %></p>
+    </div>
+  </a>
   <% end %>
 </div>
 
