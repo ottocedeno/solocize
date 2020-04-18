@@ -1,16 +1,20 @@
-<div>
-  <h2>EXERCISE LIST</h2>
-</div>
+<main class="wrapper animated fadeIn">
+  <section id="new-edit-workout-heading">
+    <h2>EXERCISE LIST</h2>
+  </section>
 
-<div>
-  <% @categories.sort_by {|c| c.name }.each do |category| %>
-    <div>
-      <h3><%= category.name %></h3>
-      <% category.exercises.sort_by {|e| e.name }.each do |exercise| %>
-        <p><%= exercise.name %> <span><%= exercise.rep_count %> Reps</span><p>
-      <% end %>
-    </div>
-  <% end %>
-</div>
+  <section id="exercise-categories">
+    <% @categories.sort_by {|c| c.name }.each do |category| %>
+      <div class="card">
+        <h3><%= category.name.upcase %></h3>
+        <% category.exercises.sort_by {|e| e.name }.each do |exercise| %>
+          <p><%= exercise.name %> <span><%= exercise.rep_count %> Reps</span><p>
+        <% end %>
+      </div>
+    <% end %>
+  </section>
+  <a href="/workouts/new" id="button-new-workout" class="flex">
+    <p>+</p>
+  </a>
+</main>
 
-<a href="/workouts/new">+</a>

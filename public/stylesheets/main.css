@@ -480,8 +480,33 @@ button[type="submit"][value="delete"] {
   font-size: 1.1em;
 }
 
-/* --- Exercise/edit Styles --- */
+/* --- Exercise Styles --- */
 #exercise-form {
   margin: 20px 0 40px 0;
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+#exercise-categories {
+  margin: 20px 0px 40px 0px;
+}
+#exercise-categories div.card {
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.15);
+  margin-bottom: 30px;
+}
+
+#exercise-categories h3 {
+  color: #606060;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+#exercise-categories p {
+  font-weight: 300;
+  font-size: 1.1em;
+  color: #fc5c7d;
+  margin-bottom: 3px;
+}
+#exercise-categories p span {
+  color: #7e7e7e;
+  margin-left: 5px;
 }
