@@ -1,21 +1,27 @@
-<div>
-  <h2>CREATE AN EXERCISE</h2>
-  <p>
-    If you didn’t see an exercise you were looking for, just created it here for
-    our community to use!
-  </p>
-</div>
+<main class="wrapper animated fadeIn">
+  <section id="new-edit-workout-heading">
+    <h2>CREATE AN EXERCISE</h2>
+    <p>
+      If you didn’t see an exercise you were looking for, just created it here
+      for our community to use!
+    </p>
+  </section>
 
-<div>
-  <form action="/exercises" method="POST">
-    <input type="text" name="exercise[name]" placeholder="Exercise Name" />
-    <input type="text" name="exercise[rep_count]" placeholder="How Many Reps?" />
-    <select name="category_id">
-      <option value="" disabled selected hidden>Category</option>
-      <% @categories.each do |category| %>
-        <option value=<%= category.id %>><%= category.name %><option>
-      <% end %>
-    </select>
-    <button type="submit">CREATE EXERCISE</button>
-  </form>
-</div>
+  <section id="exercise-form" class="card">
+    <form action="/exercises" method="POST">
+      <input type="text" name="exercise[name]" placeholder="Exercise Name" />
+      <input
+        type="text"
+        name="exercise[rep_count]"
+        placeholder="How Many Reps?"
+      />
+      <select name="category_id">
+        <option value="" disabled selected hidden>Category</option>
+        <% @categories.each do |category| %>
+        <option value="<%= category.id %>"><%= category.name %></option>
+        <% end %>
+      </select>
+      <button type="submit" id="submit">CREATE EXERCISE</button>
+    </form>
+  </section>
+</main>

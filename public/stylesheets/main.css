@@ -479,3 +479,9 @@ button[type="submit"][value="delete"] {
   font-weight: 300;
   font-size: 1.1em;
 }
+
+/* --- Exercise/edit Styles --- */
+#exercise-form {
+  margin: 20px 0 40px 0;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.15);
+}
