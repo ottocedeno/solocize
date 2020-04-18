@@ -59,8 +59,11 @@ body {
   margin-bottom: 20px;
 }
 
-input {
+input,
+select {
   border: 1px solid #fc5c7d;
+  border-radius: 0;
+  background-color: white;
   display: block;
   width: 100%;
   height: 48px;
@@ -273,15 +276,15 @@ a.featured-workout h2 {
 }
 
 /* --- Workout/Show Styles --- */
-#show-workout-info {
+#show-workout-heading {
   margin-top: 20px;
   text-align: center;
 }
-#show-workout-info a {
+#show-workout-heading a {
   color: #fc5c7d;
   font-weight: 300;
 }
-#show-workout-info p {
+#show-workout-heading p {
   color: #606060;
   font-weight: 300;
 }
@@ -336,7 +339,7 @@ button[type="submit"][value="delete"] {
   height: 70px;
   justify-content: flex-start;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
+  border-radius: 8px;
   overflow: hidden;
 }
 .exercise-number {
@@ -373,4 +376,33 @@ button[type="submit"][value="delete"] {
   margin-right: 15px;
   width: 60px;
   text-align: center;
+  opacity: 0.7;
+}
+
+/* --- Workout/new Styles --- */
+
+#new-workout-heading {
+  margin-top: 20px;
+  text-align: center;
+}
+#new-workout-heading p {
+  font-weight: 300;
+  color: #7e7e7e;
+}
+#new-workout-card {
+  margin: 20px 0 40px 0;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.15);
+}
+#new-workout-card input,
+#new-workout-card select {
+  margin-bottom: 0px;
+}
+#new-workout-card p {
+  text-align: center;
+  font-weight: 300;
+  font-size: 0.8em;
+  margin-bottom: 10px;
+}
+#new-workout-card a {
+  color: #6a8bfb;
 }

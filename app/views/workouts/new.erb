@@ -1,28 +1,34 @@
-<div>
-  <h2>CREATE A WORKOUT</h2>
-  <p>
-    Workouts are 5 exercises long. Select from the list of available exercises
-    to build your custom workout.
-  </p>
-</div>
+<main class="wrapper animated fadeIn">
+  <section id="new-workout-heading">
+    <h2>CREATE A WORKOUT</h2>
+    <p>
+      Workouts are 5 exercises long. Select from the list of available exercises
+      to build your custom workout.
+    </p>
+  </section>
 
-<div>
-  <form action="/workouts" method="POST">
-    <input type="text" name="workout[name]" placeholder="Workout Name" /> <br />
-    <input type="text" name="workout[description]" placeholder="Quick Description" />
-    <br />
-    <input type="text" name="workout[minutes]" placeholder="Length in Minutes" /> <br />
+  <section id="new-workout-card" class="card">
+    <form action="/workouts" method="POST">
+      <input type="text" name="workout[name]" placeholder="Workout Name" /> <br />
+      <input type="text" name="workout[description]" placeholder="Quick Description" />
+      <br />
+      <input type="text" name="workout[minutes]" placeholder="Length in Minutes" /> <br />
 
-    <% 5.times do |index| %>
-      <select name="exercise_ids[]" >
-        <option value="" disabled selected hidden>Exercise <%= index + 1 %></option>
-        <% @exercises.sort_by {|e| [e.category.name, e.name] }.each do |exercise| %>
-          <option value="<%= exercise.id %>"><%= exercise.category.name %> - <%= exercise.name %> - <%= exercise.rep_count %> Reps</option>
-        <% end %>
-      </select> </br>
-    <% end %>
+      <% 5.times do |index| %>
+        <select name="exercise_ids[]" >
+          <option value="" disabled selected hidden>Exercise <%= index + 1 %></option>
+          <% @exercises.sort_by {|e| [e.category.name, e.name] }.each do |exercise| %>
+            <option value="<%= exercise.id %>"><%= exercise.category.name %> - <%= exercise.name %> - <%= exercise.rep_count %> Reps</option>
+          <% end %>
+        </select> </br>
+      <% end %>
+      
+      <p>Didn’t see an exercise you’re looking for from the list?<a href="/exercises/new"> Add it here</a></p>
+      <button type="submit" id="submit">CREATE WORKOUT</button>
+    </form>
+  </section>
+  
     
-    <p>Didn’t see an exercise you’re looking for from the list?<a href="/exercises/new"> Add it here</a></p>
-    <button type="submit">CREATE WORKOUT</button>
-  </form>
-</div>
+
+</main>
+
