@@ -381,28 +381,29 @@ button[type="submit"][value="delete"] {
 
 /* --- Workout/new Styles --- */
 
-#new-workout-heading {
+#new-edit-workout-heading {
   margin-top: 20px;
   text-align: center;
 }
-#new-workout-heading p {
+#new-edit-workout-heading p {
   font-weight: 300;
   color: #7e7e7e;
 }
-#new-workout-card {
+#workout-form {
   margin: 20px 0 40px 0;
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.15);
 }
-#new-workout-card input,
-#new-workout-card select {
+#workout-form input,
+#workout-form select {
   margin-bottom: 0px;
 }
-#new-workout-card p {
+#workout-form p {
   text-align: center;
   font-weight: 300;
   font-size: 0.8em;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  color: #7e7e7e;
 }
-#new-workout-card a {
+#workout-form a {
   color: #6a8bfb;
 }

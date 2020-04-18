@@ -1,29 +1,28 @@
-<div>
-  <h2>EDITING</h2>
-  <p>
-    <%= @workout.name %>
-  </p>
-</div>
+<main class="wrapper animated fadeIn">
+  <section id="new-edit-workout-heading">
+    <h2>EDITING</h2>
+    <p><%= @workout.name %></p>
+  </section>
 
-<div>
-  <form action="/workouts/<%= @workout.slug %>" method="post">
-    <input id="hidden" type="hidden" value="patch" name="_method">
-    
-    <input type="text" name="workout[name]" value="<%= @workout.name %>" /> <br />
-    <input type="text" name="workout[description]" value="<%= @workout.description %>" />
-    <br />
-    <input type="text" name="workout[minutes]" value="<%= @workout.minutes %>" /> <br />
-
-    <% 5.times do |index| %>
-      <select name="exercise_ids[]" >
-        <% @exercises.sort_by {|e| [e.category.name, e.name] }.each do |exercise| %>
-          <option value="<%= exercise.id %>" <%= "selected" if @workout.exercise_ids[index] == exercise.id %>>
-            <%= exercise.category.name %> - <%= exercise.name %> - <%= exercise.rep_count %> Reps
-          </option>
-        <% end %>
-      </select> </br>
-    <% end %>
-
-    <button type="submit">EDIT WORKOUT</button>
-  </form>
-</div>
+  <section id="workout-form" class="card">
+    <form action="/workouts/<%= @workout.slug %>" method="post">
+      <input id="hidden" type="hidden" value="patch" name="_method">
+      
+      <input type="text" name="workout[name]" value="<%= @workout.name %>" /> <br />
+      <input type="text" name="workout[description]" value="<%= @workout.description %>" />
+      <br />
+      <input type="text" name="workout[minutes]" value="<%= @workout.minutes %>" /> <br />
+  
+      <% 5.times do |index| %>
+        <select name="exercise_ids[]" >
+          <% @exercises.sort_by {|e| [e.category.name, e.name] }.each do |exercise| %>
+            <option value="<%= exercise.id %>" <%= "selected" if @workout.exercise_ids[index] == exercise.id %>>
+              <%= exercise.category.name %> - <%= exercise.name %> - <%= exercise.rep_count %> Reps
+            </option>
+          <% end %>
+        </select> </br>
+      <% end %>
+  
+      <button type="submit" id="submit">EDIT WORKOUT</button>
+  </section>
+</main>
