@@ -72,7 +72,9 @@ select {
   font-family: "Oswald";
   font-weight: 300;
   font-size: 1em;
+  color: #7e7e7e;
 }
+
 button {
   font-family: "Oswald";
 }
@@ -89,7 +91,7 @@ button#submit {
 }
 button:hover {
   cursor: pointer;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 0px 10px rgba(36, 71, 184, 0.5);
 }
 
 .user-icon {
@@ -116,11 +118,14 @@ button:hover {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 0px 20px rgba(36, 71, 184, 0.5);
 }
 #button-new-workout p {
   font-weight: 800;
   font-size: 3.1em;
+}
+#button-new-workout:hover {
+  box-shadow: 0px 0px 26px rgba(36, 71, 184, 0.8);
 }
 
 /* --- Body when logged out Page Styles --- */
@@ -263,6 +268,7 @@ a.featured-workout h2 {
 
 .workouts a.flex {
   justify-content: flex-start;
+  align-items: center;
   margin-top: 15px;
 }
 .workout-label {
@@ -272,7 +278,11 @@ a.featured-workout h2 {
 }
 .workout-label h3 {
   font-weight: 300;
+  font-size: 1.2em;
   color: #7e7e7e;
+}
+.workout-label p {
+  font-size: 1.05em;
 }
 
 /* --- Workout/Show Styles --- */
@@ -282,10 +292,12 @@ a.featured-workout h2 {
 }
 #show-workout-heading a {
   color: #fc5c7d;
+  font-size: 1.05em;
   font-weight: 300;
 }
 #show-workout-heading p {
   color: #606060;
+  font-size: 1.05em;
   font-weight: 300;
 }
 
@@ -509,4 +521,10 @@ button[type="submit"][value="delete"] {
 #exercise-categories p span {
   color: #7e7e7e;
   margin-left: 5px;
+}
+
+@media screen and (min-width: 525px) {
+  #button-new-workout {
+    right: 33%;
+  }
 }
