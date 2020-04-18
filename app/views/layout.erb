@@ -30,7 +30,7 @@
         </a>
       </div>
       <div class="nav-user-actions flex">
-        <div class="user-icon"><%= current_user.initials %></div>
+        <div class="user-icon"><a href="/users/<%= current_user.username %>"><%= current_user.initials %><a/></div>
         <a href="/logout">LOG OUT</a>
       </div>
     </nav>
