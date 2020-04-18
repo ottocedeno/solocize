@@ -1,18 +1,25 @@
-<div>
-  <h2>MEMBERS</h2>
-  <p>A community of people getting better, 1% at a time</p>
-</div>
+<main class="wrapper animated fadeIn">
+  <section id="users-heading">
+    <h2>MEMBERS</h2>
+    <p>A community of people getting better, 1% at a time</p>
+  </section>
 
-<div>
-  <% @users.each do |user| %>
-    <a href="/users/<%= user.username %>">
-      <div><%= user.initials %></div>
-      <p><%= user.username %></p>
-      <% if user.workouts.count > 1 %>
-        <p><%= user.workouts.count %> Workouts</p>
-      <% else %>
-        <p><%= user.workouts.count %> Workout</p>
-      <% end %>
+  <section id="users-list">
+    <% @users.each do |user| %>
+    <a href="/users/<%= user.username %>" class="flex">
+      <div class="user-icon"><%= user.initials %></div>
+      <div class="user-label">
+        <p>@<%= user.username %></p>
+        <% if user.workouts.count > 1 %>
+        <p class="count"><%= user.workouts.count %> Workouts</p>
+        <% else %>
+        <p class="count"><%= user.workouts.count %> Workout</p>
+        <% end %>
+      </div>
     </a>
-  <% end %>
-</div>
+    <% end %>
+  </section>
+  <a href="/workouts/new" id="button-new-workout" class="flex">
+    <p>+</p>
+  </a>
+</main>

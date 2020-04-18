@@ -442,3 +442,40 @@ button[type="submit"][value="delete"] {
   font-size: 1.15em;
   color: #fc5c7d;
 }
+
+/* --- Users/index Styles --- */
+#users-heading {
+  text-align: center;
+  margin-top: 20px;
+}
+#users-heading p {
+  font-weight: 300;
+  color: #7e7e7e;
+}
+#users-list {
+  margin-top: 20px;
+}
+#users-list a {
+  border: 1px solid #fc5c7d;
+  height: 90px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  justify-content: flex-start;
+  align-items: center;
+}
+#users-list a .user-icon {
+  margin-left: 20px;
+}
+.user-label {
+  margin-left: 15px;
+}
+.user-label p {
+  color: #fc5c7d;
+  font-weight: 300;
+  font-size: 1.6em;
+}
+.user-label p.count {
+  color: #7e7e7e;
+  font-weight: 300;
+  font-size: 1.1em;
+}
