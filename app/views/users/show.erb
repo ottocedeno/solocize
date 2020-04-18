@@ -1,19 +1,22 @@
-<div>
-  <% if current_user.id == @user.id%>
+<main class="wrapper animated fadeIn">
+  <section id="user-heading">
+    <% if current_user.id == @user.id%>
     <h2>MY WORKOUTS</h2>
-  <% else %>
+    <% else %>
     <h2>WORKOUTS BY</h2>
-  <% end %>
-  <p>@<%= @user.username %></p>
-</div>
+    <% end %>
+    <p>@<%= @user.username %></p>
+  </section>
 
-<div>
-  <% @user.workouts.each do |workout| %>
-    <a href="/workouts/<%= workout.slug %>">
+  <section id="users-workouts">
+    <% @user.workouts.each do |workout| %>
+    <a href="/workouts/<%= workout.slug %>" class="flex">
       <h3><%= workout.name %></h3>
       <p><%= workout.minutes %> Minutes</p>
     </a>
-  <% end %>
-</div>
-
-<a href="/workouts/new">+</a>
+    <% end %>
+  </section>
+  <a href="/workouts/new" id="button-new-workout" class="flex">
+    <p>+</p>
+  </a>
+</main>

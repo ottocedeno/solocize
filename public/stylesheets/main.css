@@ -407,3 +407,38 @@ button[type="submit"][value="delete"] {
 #workout-form a {
   color: #6a8bfb;
 }
+
+/* --- User/show Styles --- */
+
+#user-heading {
+  text-align: center;
+  margin-top: 20px;
+}
+#user-heading p {
+  font-weight: 300;
+  font-size: 1.15em;
+  color: #fc5c7d;
+}
+#users-workouts {
+  margin-top: 20px;
+}
+#users-workouts a {
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+  height: 90px;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+}
+#users-workouts a h3 {
+  font-weight: 300;
+  font-size: 1.6em;
+  color: #7e7e7e;
+}
+#users-workouts a p {
+  font-weight: 300;
+  font-size: 1.15em;
+  color: #fc5c7d;
+}
