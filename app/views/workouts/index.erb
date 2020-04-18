@@ -1,4 +1,4 @@
-<main class="wrapper">
+<main class="wrapper animated fadeIn">
   <section>
     <a
       href="/workouts/<%= @featured_workout.slug %>"
@@ -6,45 +6,47 @@
     >
       <div>
         <h2>FEATURED WORKOUT</h2>
-        <p>@<%= @featured_workout.user.username %></p>
         <p><%= @featured_workout.name %></p>
-        <p><%= @featured_workout.minutes %> Minutes</p>
+        <p>@<%= @featured_workout.user.username %></p>
       </div>
     </a>
   </section>
 
   <section id="my-workouts">
-    <div class="flex">
-      <h3>MY WORKOUTS</h3>
+    <div class="flex section-heading">
+      <h2>MY WORKOUTS</h2>
       <a href="/users/<%= current_user.username%>">See All</a>
     </div>
 
-    <div>
+    <div class="flex my-list">
       <% current_user.workouts.each do |workout| %>
       <a href="/workouts/<%= workout.slug %>">
-        <h4><%= workout.name %></h4>
+        <h3><%= workout.name %></h3>
         <p><%= workout.minutes %> Minutes</p>
       </a>
       <% end %>
     </div>
   </section>
-</main>
 
-<div>
-  <h3>COMMUNITY WORKOUTS</h3>
-  <a href="/users">All Members</a>
-</div>
-
-<div>
-  <% @workouts.reverse.each do |workout| %>
-  <a href="/workouts/<%= workout.slug %>">
-    <div>
-      <div><%= workout.user.initials %></div>
-      <p><%= workout.name %></p>
-      <p>@<%= workout.user.username %></p>
+  <section id="community-workouts">
+    <div class="flex section-heading">
+      <h2>COMMUNITY WORKOUTS</h2>
+      <a href="/users">All Members</a>
     </div>
-  </a>
-  <% end %>
-</div>
 
-<a href="/workouts/new">+</a>
+    <div class="workouts">
+      <% @workouts.reverse.each do |workout| %>
+      <a href="/workouts/<%= workout.slug %>" class="flex">
+        <div class="user-icon"><%= workout.user.initials %></div>
+        <div class="workout-label">
+          <h3><%= workout.name %></h3>
+          <p>@<%= workout.user.username %></p>
+        </div>
+      </a>
+      <% end %>
+    </div>
+  </section>
+  <a href="/workouts/new" id="button-new-workout" class="flex">
+    <p>+</p>
+  </a>
+</main>
