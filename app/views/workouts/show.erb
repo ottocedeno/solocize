@@ -1,30 +1,44 @@
-<div>
-  <h2><%= @workout.name %></h2>
-  <a href="/users/<%= @workout.user.username %>"><p>@<%= @workout.user.username %></p></a>
-  <p><%= @workout.description %></p>
-  <% if user_owns_workout? %>
-    <div>
-      <a href="/workouts/<%= @workout.slug %>/edit">edit</a>
-      <form action="/workouts/<%= @workout.slug %>" method="POST">
-        <input type="hidden" name="_method" value="DELETE" />
-        <button type="submit" value="delete">delete</button>
-      </form>
-    </div>
-  <% end %>
-</div>
+<main class="wrapper animated fadeIn">
+  <section id="show-workout-info">
+    <h2><%= @workout.name.upcase %></h2>
+    <a href="/users/<%= @workout.user.username %>"
+      >@<%= @workout.user.username %></a
+    >
+    <p>"<%= @workout.description %>"</p>
+  </section>
 
-<div>
-  <p>Total Time <%= @workout.minutes %> Minutes</p>
-  <% @workout.exercises.each.with_index(1) do |exercise, index| %>
-  <div>
-    <div>
-      <%= index %>
-    </div>
-    <div>
-      <h3><%= exercise.name %></h3>
-      <p><%= exercise.rep_count %> Reps</p>
-      <span><%= exercise.category.name %></span>
-    </div>
-  </div>
+  <% if user_owns_workout? %>
+  <section id="current-user-actions" class="flex">
+    <a href="/workouts/<%= @workout.slug %>/edit" class="current-user-button"
+      >edit</a
+    >
+    <form action="/workouts/<%= @workout.slug %>" method="POST">
+      <input type="hidden" name="_method" value="DELETE" />
+      <button type="submit" value="delete" class="current-user-button">
+        delete
+      </button>
+    </form>
+  </section>
   <% end %>
-</div>
+
+  <section id="the-workout">
+    <p class="workout-time">
+      Total Time <span><%= @workout.minutes %> Minutes</span>
+    </p>
+
+    <% @workout.exercises.each.with_index(1) do |exercise, index| %>
+    <div class="exercise-container flex">
+      <div class="exercise-number flex">
+        <%= index %>
+      </div>
+      <div class="exercise-label flex">
+        <h3><%= exercise.name.upcase %></h3>
+        <div class="exercise-details flex">
+          <p><%= exercise.rep_count %> Reps</p>
+          <span><%= exercise.category.name.downcase %></span>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </section>
+</main>

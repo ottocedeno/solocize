@@ -70,8 +70,10 @@ input {
   font-weight: 300;
   font-size: 1em;
 }
-
-button[type="submit"] {
+button {
+  font-family: "Oswald";
+}
+button#submit {
   background-color: #6a8bfb;
   width: 100%;
   height: 48px;
@@ -199,7 +201,7 @@ p.ob-prompt {
   box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.35);
 }
 
-/* --- Workout Pages Styles --- */
+/* --- Workout/Index Styles --- */
 .featured-workout {
   margin-top: 30px;
   background-color: #fc5c7d;
@@ -268,4 +270,107 @@ a.featured-workout h2 {
 .workout-label h3 {
   font-weight: 300;
   color: #7e7e7e;
+}
+
+/* --- Workout/Show Styles --- */
+#show-workout-info {
+  margin-top: 20px;
+  text-align: center;
+}
+#show-workout-info a {
+  color: #fc5c7d;
+  font-weight: 300;
+}
+#show-workout-info p {
+  color: #606060;
+  font-weight: 300;
+}
+
+#current-user-actions {
+  width: 40%;
+  margin: 20px auto 0px auto;
+  justify-content: space-between;
+  align-items: center;
+}
+a.current-user-button {
+  display: block;
+  color: #6a8bfb;
+  background-color: white;
+  border: 1px solid #6a8bfb;
+  border-radius: 5px;
+  width: 56px;
+  height: 28px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 0.9em;
+}
+
+button[type="submit"][value="delete"] {
+  display: block;
+  color: #fc5c7d;
+  background-color: white;
+  border: 1px solid #fc5c7d;
+  border-radius: 5px;
+  width: 56px;
+  height: 28px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 0.9em;
+}
+
+#the-workout {
+  margin-top: 20px;
+}
+
+.workout-time {
+  text-align: center;
+  font-weight: 300;
+  color: #606060;
+}
+.workout-time span {
+  color: #fc5c7d;
+}
+
+.exercise-container {
+  margin-top: 25px;
+  height: 70px;
+  justify-content: flex-start;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.exercise-number {
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: #fc5c7d;
+  width: 75px;
+  font-size: 1.8em;
+}
+.exercise-label {
+  margin-left: 15px;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+}
+.exercise-label h3 {
+  color: #606060;
+}
+.exercise-details {
+  justify-content: space-between;
+}
+.exercise-details p {
+  font-weight: 300;
+  color: #7e7e7e;
+}
+.exercise-details span {
+  color: white;
+  background-color: #6a8bfb;
+  padding: 2px 14px;
+  font-size: 0.8em;
+  font-weight: 500;
+  border-radius: 12px;
+  margin-right: 15px;
+  width: 60px;
+  text-align: center;
 }
