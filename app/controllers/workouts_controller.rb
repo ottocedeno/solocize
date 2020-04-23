@@ -56,7 +56,7 @@ class WorkoutsController < ApplicationController
     if logged_in?
       @workout = Workout.find_by_slug(params[:slug])
 
-      if @workout && user_owns_workout?
+      if @workout && user_owns_workout?(@workout)
         @exercises = Exercise.all
         erb :'workouts/edit'
       else
@@ -71,6 +71,7 @@ class WorkoutsController < ApplicationController
     if valid_workout_entries? && valid_minutes?
       @workout = Workout.find_by_slug(params[:slug])
       @workout.update(params[:workout])
+      
       @workout.exercises.clear
       params[:exercise_ids].each {|id| @workout.exercises << Exercise.find(id) }
 
@@ -103,9 +104,8 @@ class WorkoutsController < ApplicationController
       params[:exercise_ids] && params[:exercise_ids].count == 5
     end
 
-    def user_owns_workout?
-      w = Workout.find_by_slug(params[:slug])
-      w.user_id == session[:user_id]
+    def user_owns_workout?(workout)
+      workout.user_id == session[:user_id]
     end
   end
 end

@@ -19,7 +19,7 @@
     </div>
 
     <div class="flex my-list">
-      <% current_user.workouts.reverse.first(2).each do |workout| %>
+      <% current_user.first_two_workouts.each do |workout| %>
       <a href="/workouts/<%= workout.slug %>">
         <h3><%= workout.name %></h3>
         <p><%= workout.minutes %> Minutes</p>
